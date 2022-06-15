@@ -1,0 +1,11 @@
+.register-card{
+    max-width: 500px;
+    margin-top: 10px;
+}
+
+.form-control{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 400px;
+    margin-left: 10px;
+}
