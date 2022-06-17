@@ -1,21 +1,15 @@
 
-<mat-card class="register-card container">
-    <mat-card-title style="text-align: center;">Register</mat-card-title>
+<mat-card class="login-card container">
+    <mat-card-title style="text-align: center;">Login</mat-card-title>
     <mat-card-content>
         
-        <form ngNativeValidate (submit)="matchPasswords()">
+        <form ngNativeValidate (submit)="login()">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" class="form-control" [(ngModel)]="username" name="username" required="true">
             
-                <label>Email</label>
-                <input type="email" class="form-control" [(ngModel)]="email" name="email" required="true">
-
                 <label>Password</label>
                 <input type="password" class="form-control" [(ngModel)]="password" name="password" required="true">
-
-                <label>Confirm Password</label>
-                <input type="password" class="form-control" [(ngModel)]="cpassword" name="cpassword" required="true">
 
                 <div>
                     <p [ngStyle]="{'color': color1}">{{response}}</p>
@@ -26,11 +20,11 @@
             <div class="container d-flex">            
                 <div style="margin: auto;">
                     <i>                    
-                        <p style="margin-top: 15px;">Arleady have an account?<a routerLink="/login">Login</a></p>
+                        <p style="margin-top: 15px;">Don't have an account?<a routerLink="/register">Sign Up</a></p>
                     </i>
                 </div>
                 <div>
-                    <input type="submit" class="btn btn-primary" value="Continue">
+                    <input type="submit" class="btn btn-primary" value="Login">
                 </div>
 
         </div>

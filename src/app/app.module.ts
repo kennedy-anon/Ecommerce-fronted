@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LoginComponent } from './component/login/login.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HeaderComponent,
     CartComponent,
     ProductsComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
         //console.log("relax a bit");
         this.response = "Username arleady taken or an account with that email arleady exists!";
       }else if(this.fullResponse.status == 500){
-        this.response = "Oops! Try again later";
+        this.response = "Oops! Try again later.";
         //console.log("server error");
       }
     }
