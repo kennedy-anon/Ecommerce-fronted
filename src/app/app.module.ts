@@ -13,7 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoginComponent } from './component/login/login.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -23,7 +27,8 @@ import { LoginComponent } from './component/login/login.component';
     CartComponent,
     ProductsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,9 @@ import { LoginComponent } from './component/login/login.component';
     MatSliderModule,
     MatCardModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

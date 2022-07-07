@@ -1,0 +1,65 @@
+ <div class="container">
+
+
+  <mat-sidenav-container class="sideContainer" *ngIf="true">
+
+    <mat-sidenav #sidenav mode="side" opened >
+      <div class="container" id="sideBar">
+        <h4>Admin Panel</h4>
+        <hr>
+
+        <h5>Add Products</h5>
+        <h5>User Stats</h5>
+        <h5>Income</h5>
+        <h5>Users</h5>
+
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="container" id="mainContent">
+        <div class="navbar d-flex">
+          <button type="button" mat-button (click)="sidenav.toggle()" >
+            <mat-icon aria-hidden="false" aria-label="dehaze icon">dehaze</mat-icon>
+          </button>
+        </div>
+        <hr>
+        <h4>Add Product</h4>
+        <hr>
+
+        <form ngNativeValidate>
+          <div class="form-group">
+              <label>Title*</label>
+              <input type="text" class="form-control" name="title" required="true" id="title">
+          </div>
+
+          <div class="form-group d-flex">
+
+            <mat-card class="container" id="desc">
+            <mat-card-subtitle>Description</mat-card-subtitle>
+            <mat-card-content>
+              <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+            </mat-card-content>
+            </mat-card>
+
+            <mat-card class="container" id="img1">
+              <mat-card-subtitle>Image</mat-card-subtitle>
+              <mat-card-content>
+                <span>Select Image</span>
+                <input #imageInput
+                       type="file"
+                       accept="image/*"
+                >
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+
+      </form>
+
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+  
+</div>

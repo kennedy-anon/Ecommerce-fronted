@@ -1,0 +1,42 @@
+#main-container{
+}
+
+.sideContainer{
+    height: 100vh;
+}
+
+#sideBar{
+    height: 100vh;
+    width: 183px;
+    border-radius: 19px;
+    background-color: #4f5d73;
+
+}
+
+#sideBar h4{
+    text-align: center;
+}
+
+#mainContent{
+    border-radius: 22px;
+    height: 100vh;
+}
+
+#mainContent button{
+    border:0px;
+}
+
+#title{
+    max-width: 800px;
+    margin-top: 10px;
+}
+
+#desc{
+    margin-top: 20px;
+
+}
+
+#img1{
+    margin-top: 20px;
+    margin-left: 20px;
+}
