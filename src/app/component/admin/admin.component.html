@@ -1,19 +1,22 @@
  <div class="container">
 
-
   <mat-sidenav-container class="sideContainer" *ngIf="true">
 
     <mat-sidenav #sidenav mode="side" opened >
-      <div class="container" id="sideBar">
-        <h4>Admin Panel</h4>
-        <hr>
+      <mat-card class="container navPanel">
 
-        <h5>Add Products</h5>
-        <h5>User Stats</h5>
-        <h5>Income</h5>
-        <h5>Users</h5>
+        <div class="container">
+          <h2>Admin Panel</h2>
+          <hr>
+        </div>
 
-      </div>
+        <h4>
+          <mat-icon aria-hidden="false" aria-label="input" class="iconsLine">input</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Add Products
+        </h4>
+        <h4><mat-icon aria-hidden="false" aria-label="score" class="iconsLine">score</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;User Stats</h4>
+        <h4><mat-icon aria-hidden="false" aria-label="wallet" class="iconsLine">wallet</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Income</h4>
+        <h4><mat-icon aria-hidden="false" aria-label="accounts" class="iconsLine">supervisor_account</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Users</h4>
+      </mat-card>
     </mat-sidenav>
 
     <mat-sidenav-content>
@@ -33,33 +36,70 @@
               <input type="text" class="form-control" name="title" required="true" id="title">
           </div>
 
-          <div class="form-group d-flex">
+          <div class="row d-flex">
 
-            <mat-card class="container" id="desc">
-            <mat-card-subtitle>Description</mat-card-subtitle>
+            <mat-card class="col-md-6 container" id="desc">
+            <mat-card-subtitle>Description*</mat-card-subtitle>
             <mat-card-content>
               <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
             </mat-card-content>
             </mat-card>
 
-            <mat-card class="container" id="img1">
-              <mat-card-subtitle>Image</mat-card-subtitle>
+            <mat-card class="col-md-5 container" id="img1">
+              <mat-card-subtitle>Image*</mat-card-subtitle>
+              <mat-card-subtitle>                
+                <input #imageInput type="file" accept="image/*"></mat-card-subtitle>
               <mat-card-content>
-                <span>Select Image</span>
-                <input #imageInput
-                       type="file"
-                       accept="image/*"
-                >
+                <img mat-card-image src="" alt="Product Image">
               </mat-card-content>
             </mat-card>
 
           </div>
 
+          <mat-card style="margin-top: 10px; margin-top: 10px;" class="row d-flex">
+            <div class="col-md-6 form-group">
+              <label>Price*</label>
+              <input type="number" class="form-control" name="price" required="true" id="price">
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label for="">Count</label>
+              <input type="number" class="form-control" name="count" id="count">
+            </div>
+          
+          </mat-card>
+
+          <mat-card class="row d-flex">
+            <div class="form-group col-md-6">
+              <label for="">Color</label>
+              <input type="text" class="form-control" name="color" id="color">
+            </div>
+
+          <div class="form-group col-md-6">
+            <label for="">Size</label>
+            <input type="text" class="form-control" name="size" id="size">
+          </div>
+
+        </mat-card>
+
+        <mat-card>
+          <div class="form-group">
+            <label for="">Categories</label>
+            <input type="text" class="form-control">
+          </div>
+
+        </mat-card>
+
+        <div class="container submitBtn">
+          <input type="submit" class="btn btn-primary form-control" value="Add" id="addBtn">
+        </div>
+
       </form>
 
-      </div>
+    </div>
     </mat-sidenav-content>
 
   </mat-sidenav-container>
-  
+
 </div>
+
