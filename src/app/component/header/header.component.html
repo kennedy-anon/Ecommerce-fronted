@@ -10,6 +10,29 @@
             </div>
             <span class="fa-solid fa-magnifying-glass search-icon"></span>
         </div>
+
+        <button class="btn btn-primary" type="button" mat-button [matMenuTriggerFor]="menu" id="accounts">
+            <i  style="font-size: 30px;" class="fa-solid fa-user"></i>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="login">
+                    <mat-icon>login</mat-icon>
+                    <span>Sign In</span>
+                </button>
+
+                <button mat-menu-item routerLink="register">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Create Account</span>
+                </button>
+
+                <button mat-menu-item>
+                  <mat-icon>exit_to_app</mat-icon>
+                  <span>Log out</span>
+                </button>
+              </mat-menu>
+        </button>
+
+
         <button routerLink="cart" class="btn btn-primary">
             <i style="font-size: 30px;" class="fa-solid fa-cart-plus"></i>
             <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
