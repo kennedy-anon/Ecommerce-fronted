@@ -9,8 +9,20 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn = false;
 
   constructor(private http: HttpClient) { }
+
+  //change to true
+  updateAuthenticated(){
+    this.isLoggedIn = true;
+    console.log("Allowed admin access");
+  }
+  
+  //for guarding routes
+  isAuthenticated(){
+    return this.isLoggedIn;
+  }
 
   //register new account
   registerAccount(newAccount: any){

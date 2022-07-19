@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
-import { loginCredentials } from 'src/app/schemas/loginCredentials';
+import { Router } from '@angular/router';
+// import { loginCredentials } from 'src/app/schemas/loginCredentials';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   logins: any;
   fResponse : any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private route: Router) { }
 
   login(){
     const credentials = {
@@ -28,12 +30,22 @@ export class LoginComponent implements OnInit {
     this.authService.loginAccount(credentials)
     .subscribe(loginCredentials => {
       this.fResponse = loginCredentials;
-      
-      if (this.fResponse.status == 200){
+      //console.log(this.fResponse.body.isAdmin);
+
+      //Checking access priviledges
+      if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin)) {
+        console.log("Admin access granted");
+        this.response = "Success";
+        this.color1 = "green";
+        this.authService.updateAuthenticated();
+        this.route.navigate(['/admin']);
+
+      }else if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin == false)){
+        console.log("Granted access with no admin priviledges");
         this.response = "Success";
         this.color1 = "green";
       }
-      //console.log(this.fResponse);
+
     }, (error)=>{
       this.fResponse = error;
       if (this.fResponse.status == 401){

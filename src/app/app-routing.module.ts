@@ -5,6 +5,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { LoginComponent } from './component/login/login.component';
 import { ProductsComponent } from './component/products/products.component';
 import { RegisterComponent } from './component/register/register.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'products', pathMatch:'full'},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent, canActivate:[AdminGuard]}
 
 ];
 
