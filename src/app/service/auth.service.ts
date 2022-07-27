@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
+//import { of } from 'rxjs/internal/observable/of';
+//import { BehaviorSubject, Subject } from 'rxjs';
+//import * as jwt_decode from "jwt-decode";
 //import { Observable, throwError } from 'rxjs';
 //import { catchError, retry } from 'rxjs/operators';
 
@@ -9,20 +13,51 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private jwtHelper :JwtHelperService) {}
 
-  //change to true
-  updateAuthenticated(){
-    this.isLoggedIn = true;
-    console.log("Allowed admin access");
-  }
+  /*decode access token
+  isLoggedIn(){
+    const token = localStorage.getItem('access_token');
+    const payload = atob(token?.split('.')[1]);
+    const parsedPayload = JSON.parse(payload);
+
+    return parsedPayload.exp > Date.now()
+  }*/
   
-  //for guarding routes
-  isAuthenticated(){
-    return this.isLoggedIn;
+
+  //decode access token
+  decodeToken(token: string | null){
+    if (token){
+      console.log(this.jwtHelper.decodeToken(token).isAdmin);
+    }
+
   }
+
+  //Check if token has expired
+  isExpired(): boolean{
+    const token = localStorage.getItem('access_token');
+    if (token){
+      return this.jwtHelper.isTokenExpired(token);
+    }else{
+      return false;
+    }
+  }
+
+    //for guarding routes...check if admin
+    isAdmin(): boolean{
+      let token = localStorage.getItem('access_token');
+      if (token){
+        return this.jwtHelper.decodeToken(token).isAdmin;
+      }else{
+        return false;
+      }
+    }
+
+    //logout
+    logOut(){
+      localStorage.removeItem('access_token');
+    }
 
   //register new account
   registerAccount(newAccount: any){

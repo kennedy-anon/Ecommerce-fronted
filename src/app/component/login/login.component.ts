@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-
   username !: string;
   password !: string;
   color1 : string="red";
@@ -30,14 +29,14 @@ export class LoginComponent implements OnInit {
     this.authService.loginAccount(credentials)
     .subscribe(loginCredentials => {
       this.fResponse = loginCredentials;
-      //console.log(this.fResponse.body.isAdmin);
+      localStorage.setItem('access_token', this.fResponse.body.accessToken);
+      //console.log(this.fResponse.body.accessToken);
 
       //Checking access priviledges
       if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin)) {
-        console.log("Admin access granted");
+        //console.log("Admin access granted");
         this.response = "Success";
         this.color1 = "green";
-        this.authService.updateAuthenticated();
         this.route.navigate(['/admin']);
 
       }else if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin == false)){
