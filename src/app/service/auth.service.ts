@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-//import { of } from 'rxjs/internal/observable/of';
-//import { BehaviorSubject, Subject } from 'rxjs';
-//import * as jwt_decode from "jwt-decode";
-//import { Observable, throwError } from 'rxjs';
-//import { catchError, retry } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,32 +10,19 @@ export class AuthService {
 
   constructor(private http: HttpClient, private jwtHelper :JwtHelperService) {}
 
-  /*decode access token
-  isLoggedIn(){
-    const token = localStorage.getItem('access_token');
-    const payload = atob(token?.split('.')[1]);
-    const parsedPayload = JSON.parse(payload);
-
-    return parsedPayload.exp > Date.now()
-  }*/
-  
-
-  //decode access token
-  decodeToken(token: string | null){
-    if (token){
-      console.log(this.jwtHelper.decodeToken(token).isAdmin);
-    }
-
-  }
-
   //Check if token has expired
   isExpired(): boolean{
     const token = localStorage.getItem('access_token');
     if (token){
       return this.jwtHelper.isTokenExpired(token);
     }else{
-      return false;
+      return true;
     }
+  }
+
+  //return true if token is still valid(not expired)
+  isNotExpired(): boolean{
+    return !this.isExpired();
   }
 
     //for guarding routes...check if admin
@@ -57,6 +38,7 @@ export class AuthService {
     //logout
     logOut(){
       localStorage.removeItem('access_token');
+      localStorage.removeItem('user_name');
     }
 
   //register new account
@@ -72,6 +54,17 @@ export class AuthService {
     var headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
     return this.http.post('http://localhost:5000/api/auth/login', credentials, {headers: headers, observe: 'response'})
+    .pipe(map(res => res));
+  }
+
+  //Add product
+  addProduct(newProduct: any){
+    const access_token = localStorage.getItem('access_token');
+
+    var headers = new HttpHeaders();
+    headers.append('Content-type', 'application/json');
+    headers.append('token', 'Bearer ' + access_token);
+    return this.http.post('http://localhost:5000/api/products', newProduct, {headers: headers, observe: 'response'})
     .pipe(map(res => res));
   }
   

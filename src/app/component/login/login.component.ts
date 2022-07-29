@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
-// import { loginCredentials } from 'src/app/schemas/loginCredentials';
-
 
 @Component({
   selector: 'app-login',
@@ -30,6 +28,8 @@ export class LoginComponent implements OnInit {
     .subscribe(loginCredentials => {
       this.fResponse = loginCredentials;
       localStorage.setItem('access_token', this.fResponse.body.accessToken);
+      localStorage.setItem('user_name', this.fResponse.body.username);
+
       //console.log(this.fResponse.body.accessToken);
 
       //Checking access priviledges
