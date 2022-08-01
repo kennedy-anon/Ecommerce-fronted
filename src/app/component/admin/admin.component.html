@@ -44,7 +44,7 @@
         <h2>Add Product</h2>
         <hr>
 
-        <form ngNativeValidate>
+        <form ngNativeValidate (submit)="addProduct()" enctype="multipart/form-data">
           <div class="form-group">
               <label>Title*</label>
               <input type="text" class="form-control" [(ngModel)]="title" name="title" required="true" id="title">

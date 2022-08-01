@@ -56,16 +56,5 @@ export class AuthService {
     return this.http.post('http://localhost:5000/api/auth/login', credentials, {headers: headers, observe: 'response'})
     .pipe(map(res => res));
   }
-
-  //Add product
-  addProduct(newProduct: any){
-    const access_token = localStorage.getItem('access_token');
-
-    var headers = new HttpHeaders();
-    headers.append('Content-type', 'application/json');
-    headers.append('token', 'Bearer ' + access_token);
-    return this.http.post('http://localhost:5000/api/products', newProduct, {headers: headers, observe: 'response'})
-    .pipe(map(res => res));
-  }
   
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
+import { ProductService } from 'src/app/service/product.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +20,7 @@ export class AdminComponent implements OnInit {
   cat !: string;
   prod : any;
 
-  constructor(private authService: AuthService, private route: Router) { }
+  constructor(private authService: AuthService, private productService: ProductService, private route: Router) { }
 
   logout(){
     this.authService.logOut();
@@ -65,7 +66,7 @@ export class AdminComponent implements OnInit {
       count: this.count
     }
 
-    this.authService.addProduct(newProduct)
+    this.productService.addProduct(newProduct)
     .subscribe(product => {
       this.prod = product;
       console.log(this.prod);
