@@ -14,10 +14,16 @@ export class ProductService {
       const access_token = localStorage.getItem('access_token');
   
       var headers = new HttpHeaders({
-        'Content-Type': 'application/json',
         'token': `Bearer ${access_token}`
       });
-      return this.http.post('http://localhost:5000/api/products', newProduct, {headers: headers, observe: 'response'})
+
+      const formData = new FormData();
+      Object.entries(newProduct).forEach(
+        ([key, value]: any[]) => {
+          formData.append(key, value);
+        })
+
+      return this.http.post('http://localhost:5000/api/products', formData, {headers: headers, observe: 'response'})
       .pipe(map(res => res));
     }
 }

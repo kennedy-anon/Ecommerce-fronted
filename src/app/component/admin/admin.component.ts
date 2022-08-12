@@ -3,12 +3,19 @@ import { AuthService } from 'src/app/service/auth.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Router } from '@angular/router';
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
+  selectedFile !: ImageSnippet;
+
   username !: string;
   title !: string;
   desc !: string;
@@ -27,6 +34,19 @@ export class AdminComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
+  //for handling the product image
+  processFile(imageInput: any){
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any)=>{
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.img = this.selectedFile.file;
+    })
+
+    reader.readAsDataURL(file);
+  }
+
   //transforming categories to array
   splitCat(){
     const categ = this.cat.split(",");
@@ -36,7 +56,7 @@ export class AdminComponent implements OnInit {
         categ[i] = this.removeSpace(categ[i]);
       }
 
-      console.log(categ[i]);
+      //console.log(categ[i]);
     }
 
     return categ;
@@ -53,7 +73,12 @@ export class AdminComponent implements OnInit {
 
   //add product
   addProduct(){
-    let categorieS = this.splitCat(); //converting categories to an array
+    let categorieS;
+    if (this.cat){
+      categorieS = this.splitCat(); //converting categories to an array
+    }else{
+      categorieS = this.cat;
+    }
 
     const newProduct = {
       title: this.title,

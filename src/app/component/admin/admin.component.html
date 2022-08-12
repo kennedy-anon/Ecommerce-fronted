@@ -57,7 +57,7 @@
               <strong>Description*</strong>
             </mat-card-subtitle>
             <mat-card-content>
-              <textarea name="" id="" cols="30" rows="10" class="form-control" [(ngModel)]="desc" name="desc"></textarea>
+              <textarea id="" cols="30" rows="10" class="form-control" [(ngModel)]="desc" name="desc" required="true"></textarea>
             </mat-card-content>
             </mat-card>
 
@@ -66,9 +66,9 @@
                 <strong>Image*</strong>
               </mat-card-subtitle>
               <mat-card-subtitle>                
-                <input #imageInput type="file" accept="image/*" [(ngModel)]="img" name="img"></mat-card-subtitle>
-              <mat-card-content>
-                <img mat-card-image src="" alt="Product Image">
+                <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)" name="img" required="true"></mat-card-subtitle>
+              <mat-card-content *ngIf="selectedFile">
+                <img id="productImg" mat-card-image src="{{ selectedFile.src }}" alt="Product Image">
               </mat-card-content>
             </mat-card>
 
@@ -81,8 +81,8 @@
             </div>
 
             <div class="col-md-6 form-group">
-              <label for="">Count</label>
-              <input type="number" class="form-control" [(ngModel)]="count" name="count" id="count">
+              <label for="">Count*</label>
+              <input type="number" class="form-control" [(ngModel)]="count" name="count" id="count" required="true">
             </div>
           
           </mat-card>
@@ -95,14 +95,14 @@
 
           <div class="form-group col-md-6">
             <label for="">Size</label>
-            <input type="text" class="form-control" name="size" id="size">
+            <input type="text" class="form-control" [(ngModel)]="size" name="size" id="size">
           </div>
 
         </mat-card>
 
         <mat-card class="row">
           <div class="form-group">
-            <label for="">Categories</label>
+            <label for="">Categories <i>(Separate multiple categories with a comma.)</i></label>
             <input type="text" class="form-control" [(ngModel)]="cat" name="cat" >
           </div>
 
