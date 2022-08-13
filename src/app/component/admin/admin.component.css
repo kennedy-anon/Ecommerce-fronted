@@ -23,11 +23,6 @@
     border:0px;
 }
 
-#title{
-    max-width: 950px;
-    margin-top: 10px;
-}
-
 #desc{
     margin-top: 20px;
 }
@@ -56,4 +51,20 @@
     height: 250px;
     margin-top: 15px;
     margin-left: 30px;
+}
+
+.form-control{
+    margin-top: 10px;
+}
+
+.col-space{
+    /*class gy-3 */
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 768px){
+    /* for desktop */
+    .col-space{
+        margin-top: 0px;
+    }
 }
