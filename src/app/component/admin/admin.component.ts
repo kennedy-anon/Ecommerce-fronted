@@ -109,8 +109,8 @@ export class AdminComponent implements OnInit {
     this.productService.addProduct(newProduct)
     .subscribe(product => {
       this.prod = product;
-      console.log(this.prod);
-      alert(this.prod);
+      //console.log(this.prod.body);
+      alert(this.prod.body);
     })
 
   }
