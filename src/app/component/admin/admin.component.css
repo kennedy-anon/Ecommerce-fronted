@@ -14,9 +14,14 @@
     text-align: center;
 }
 
+.navbar h1{
+    margin-bottom: 0px;
+}
+
 #mainContent{
     border-radius: 22px;
     height: 100vh;
+    background-color: aliceblue;
 }
 
 #mainContent button{
@@ -57,14 +62,6 @@
     margin-top: 10px;
 }
 
-.col-space{
-    /*class gy-3 */
-    margin-top: 20px;
-}
-
-@media only screen and (min-width: 768px){
-    /* for desktop */
-    .col-space{
-        margin-top: 0px;
-    }
+form{
+    background-color: aliceblue;
 }

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { ProductService } from 'src/app/service/product.service';
 import { Router } from '@angular/router';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import { MatDrawerMode } from '@angular/material/sidenav';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -13,6 +17,10 @@ class ImageSnippet {
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  destroyed = new Subject<void>();
+  sideNavMode : MatDrawerMode = "over";
+  gutterClass : String = "gy-3";
+  sideNavTrigger : boolean = false;
 
   selectedFile !: ImageSnippet;
 
@@ -27,7 +35,14 @@ export class AdminComponent implements OnInit {
   cat !: string;
   prod : any;
 
-  constructor(private authService: AuthService, private productService: ProductService, private route: Router) { }
+  constructor(private authService: AuthService, private productService: ProductService, private route: Router, private breakpointObserver: BreakpointObserver) {
+    
+   }
+
+   ngOnDestroy(){
+    this.destroyed.next();
+    this.destroyed.complete();
+   }
 
   logout(){
     this.authService.logOut();
@@ -95,15 +110,37 @@ export class AdminComponent implements OnInit {
     .subscribe(product => {
       this.prod = product;
       console.log(this.prod);
+      alert(this.prod);
     })
 
   }
 
   ngOnInit(): void {
+    //Username to display on profile
     let uName = localStorage.getItem('user_name');
     if (uName){
       this.username = uName;
     }
+
+    //mobile resposiveness
+    this.breakpointObserver.observe([
+      '(min-width: 768px)',
+      '(max-width: 768px)'
+    ])
+    .pipe(takeUntil(this.destroyed))
+    .subscribe(() => {
+      //for desktop
+      if(this.breakpointObserver.isMatched('(min-width: 768px)')) {
+        this.sideNavMode = "side";
+        this.gutterClass = "gy-0";
+        this.sideNavTrigger = true;
+      }else if(this.breakpointObserver.isMatched('(max-width: 768px)')){
+        //for mobile
+        this.sideNavMode = "over";
+        this.gutterClass = "gy-3";
+        this.sideNavTrigger = false;
+      }
+    })
   }
 
 }

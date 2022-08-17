@@ -18,6 +18,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
@@ -42,7 +43,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     FormsModule,
     MatSidenavModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
   bootstrap: [AppComponent]

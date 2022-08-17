@@ -2,7 +2,7 @@
 
   <mat-sidenav-container class="sideContainer" *ngIf="true">
 
-    <mat-sidenav #sidenav mode="side" opened >
+    <mat-sidenav #sidenav [mode]="this.sideNavMode" [opened]="sideNavTrigger">
       <mat-card class="container navPanel">
 
         <div class="container">
@@ -17,7 +17,6 @@
         <h4><mat-icon aria-hidden="false" aria-label="wallet" class="iconsLine">wallet</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Income</h4>
         <h4><mat-icon aria-hidden="false" aria-label="accounts" class="iconsLine">supervisor_account</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Users</h4>
         <h4><mat-icon aria-hidden="false" aria-label="accounts" class="iconsLine">list</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Products</h4>
-
       </mat-card>
     </mat-sidenav>
 
@@ -25,8 +24,10 @@
       <div class="container" id="mainContent">
         <div class="navbar d-flex">
           <button type="button" mat-icon-button (click)="sidenav.toggle()" >
-            <mat-icon aria-hidden="false" aria-label="hide/display panel">dehaze</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="hide/display panel" class="iconsLine">dehaze</mat-icon>
           </button>
+
+          <h1><i>equickShop</i></h1>
 
           <button  type="button" mat-button [matMenuTriggerFor]="menu">
             <span>{{ this.username }}&nbsp;</span>
@@ -76,26 +77,26 @@
 
           </div>
 
-          <mat-card style="margin-top: 10px; margin-top: 10px;" class="row d-flex">
+          <mat-card style="margin-top: 10px; margin-top: 10px;" class="row d-flex {{ gutterClass }}">
             <div class="col-md-6 form-group">
               <label>Price*</label>
               <input type="number" class="form-control" [(ngModel)]="price" name="price" required="true" id="price">
             </div>
 
-            <div class="col-md-6 form-group col-space">
+            <div class="col-md-6 form-group">
               <label for="">Count*</label>
               <input type="number" class="form-control" [(ngModel)]="count" name="count" id="count" required="true">
             </div>
           
           </mat-card>
 
-          <mat-card class="row d-flex">
+          <mat-card class="row d-flex {{ gutterClass }}">
             <div class="form-group col-md-6">
               <label for="">Color</label>
               <input type="text" class="form-control" [(ngModel)]="color" name="color" id="color">
             </div>
 
-          <div class="form-group col-md-6  col-space">
+          <div class="form-group col-md-6">
             <label for="">Size</label>
             <input type="text" class="form-control" [(ngModel)]="size" name="size" id="size">
           </div>
@@ -113,12 +114,11 @@
         <div class="container submitBtn">
           <input type="submit" class="btn btn-primary form-control" value="Add" id="addBtn">
         </div>
-
-        <hr>
-        <p>equickShop &copy; 2022</p>
-        <hr>
-
       </form>
+
+      <hr>
+        <p>equickShop &copy; 2022</p>
+      <hr>
 
     </div>
     </mat-sidenav-content>
