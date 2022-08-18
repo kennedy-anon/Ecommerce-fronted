@@ -45,7 +45,7 @@
         <h2>Add Product</h2>
         <hr>
 
-        <form ngNativeValidate (submit)="addProduct()" enctype="multipart/form-data">
+        <form #productForm="ngForm" ngNativeValidate (submit)="addProduct(productForm)" enctype="multipart/form-data">
           <mat-card>
             <div class="form-group">
               <label>Title*</label>

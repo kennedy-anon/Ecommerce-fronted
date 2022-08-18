@@ -6,6 +6,7 @@ import {BreakpointObserver} from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import { MatDrawerMode } from '@angular/material/sidenav';
+import { NgForm } from '@angular/forms';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -87,7 +88,7 @@ export class AdminComponent implements OnInit {
   }
 
   //add product
-  addProduct(){
+  addProduct(productForm :NgForm){
     let categorieS;
     if (this.cat){
       categorieS = this.splitCat(); //converting categories to an array
@@ -109,8 +110,18 @@ export class AdminComponent implements OnInit {
     this.productService.addProduct(newProduct)
     .subscribe(product => {
       this.prod = product;
-      //console.log(this.prod.body);
-      alert(this.prod.body);
+
+      if (this.prod.status == 200){
+        productForm.reset();
+        alert(this.prod.body);
+      }
+    }, (error)=>{
+      this.prod = error;
+      if (this.prod.status == 500){
+        alert("Check your internet connection.");
+      }else if (this.prod.status == 409){
+        alert(this.prod.error.msg);
+      }
     })
 
   }

@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('access_token', this.fResponse.body.accessToken);
       localStorage.setItem('user_name', this.fResponse.body.username);
 
-      //console.log(this.fResponse.body.accessToken);
-
       //Checking access priviledges
       if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin)) {
         //console.log("Admin access granted");

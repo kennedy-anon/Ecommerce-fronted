@@ -44,7 +44,6 @@ export class RegisterComponent implements OnInit {
     .subscribe(account => {
       this.accounts.push(account);
       this.fullResponse = account;
-      //console.log(this.fullResponse.status);
 
       if (this.fullResponse.status == 201){
         this.color1 = "green";
@@ -53,13 +52,10 @@ export class RegisterComponent implements OnInit {
       }
     }, (error)=>{
       this.fullResponse = error;
-      //console.log(this.fullResponse.status);
       if (this.fullResponse.status == 409){
-        //console.log("relax a bit");
         this.response = "Username arleady taken or an account with that email arleady exists!";
       }else if(this.fullResponse.status == 500){
         this.response = "Oops! Try again later.";
-        //console.log("server error");
       }
     }
     )
