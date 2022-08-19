@@ -26,4 +26,12 @@ export class ProductService {
       return this.http.post('http://localhost:5000/api/products', formData, {headers: headers, observe: 'response'})
       .pipe(map(res => res));
     }
+
+    //get products
+    getProducts(){
+      return this.http.get<any>("http://localhost:5000/api/products")
+      .pipe(map((res:any)=>{
+        return res;
+      }))
+    }
 }

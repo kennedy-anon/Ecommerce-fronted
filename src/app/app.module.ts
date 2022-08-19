@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     ProductsComponent,
     RegisterComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

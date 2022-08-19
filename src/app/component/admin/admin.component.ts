@@ -17,6 +17,7 @@ class ImageSnippet {
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
 export class AdminComponent implements OnInit {
   destroyed = new Subject<void>();
   sideNavMode : MatDrawerMode = "over";
@@ -71,8 +72,6 @@ export class AdminComponent implements OnInit {
       if (categ[i].charAt(0) == " "){
         categ[i] = this.removeSpace(categ[i]);
       }
-
-      //console.log(categ[i]);
     }
 
     return categ;
@@ -113,6 +112,7 @@ export class AdminComponent implements OnInit {
 
       if (this.prod.status == 200){
         productForm.reset();
+        this.selectedFile.src = '';
         alert(this.prod.body);
       }
     }, (error)=>{
