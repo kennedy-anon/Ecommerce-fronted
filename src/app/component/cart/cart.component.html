@@ -23,7 +23,7 @@
                             <td>{{i+1}}</td>
                             <td>{{item.title}}</td>
                             <td><img style="width: 120px;" [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt=""></td>
-                            <td style="width: 25%;">{{item.desc}}</td>
+                            <td style="width: 25%; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 50ch;">{{item.desc}}</td>
                             <td style="width: 12%;">{{item.price}}</td>
                             <td style="width: 12%;">{{item.quantity}}</td>
                             <td style="width: 12%;">{{item.total}}</td>

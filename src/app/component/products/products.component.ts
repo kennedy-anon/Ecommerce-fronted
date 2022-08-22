@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/product.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent implements OnInit {
 
   public productList: any;
 
-  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService) { }
+  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     /*this.api.getProduct()
@@ -44,6 +45,12 @@ export class ProductsComponent implements OnInit {
 
   addtocart(item: any){
     this.cartService.addToCart(item);
+    this._snackBar.open('Added to cart.', '', {
+      duration: 1000,
+      panelClass: ['styleSnackBar'],
+    });
+
+    
   }
 
 }

@@ -19,6 +19,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
@@ -46,7 +47,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     MatSidenavModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule
   ],
   providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
   bootstrap: [AppComponent]
