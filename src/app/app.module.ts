@@ -23,7 +23,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,

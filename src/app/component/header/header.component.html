@@ -1,16 +1,22 @@
 <header>
     <div class="navbar bg-primary shadow-sm">
         <div class="navbar-brand align-item-center d-flex">
-            <i class="fa-solid fa-truck-fast" style="font-size: 40px; color:aliceblue">
+            <i class="fa-solid fa-truck-fast" style="font-size: 40px; color:aliceblue" id="truck">
                 &nbsp;
             </i>
-            <strong style="font-size: 30px; color:aliceblue">equickShop</strong>
-            <div class="form-group">
-                <input type="text" placeholder="search products" class="form-control">
+            <a href=""><strong style="color:aliceblue;" id="shopName">equickShop</strong></a>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <input type="search" placeholder="Search Products" class="form-control">
+                </div>
+                <button type="button" class="btn btn-secondary">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
-            <span class="fa-solid fa-magnifying-glass search-icon"></span>
         </div>
 
+    
         <button class="btn btn-primary" type="button" mat-button [matMenuTriggerFor]="menu" id="accounts">
             <i  style="font-size: 30px;" class="fa-solid fa-user"></i>
 
