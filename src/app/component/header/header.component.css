@@ -3,17 +3,25 @@
     margin-left: 20px;
 }
 
-.fa-solid{
+#truck{
     margin-left: 50px;
+}
+
+#shopName{
+    font-size: 30px;
 }
 
 a:hover { 
     text-decoration: none;
 }
 
+.fa-solid{
+    font-size: 30px;
+}
+
 @media screen and (min-width: 1370px){
     .form-control{
-        width: 450px;
+        width: 500px;
     }
 
     #shopName{
@@ -22,5 +30,19 @@ a:hover {
 
     #accounts{
         margin-left: 300px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    #truck{
+        margin-left: 2px;
+    }
+
+    #shopName{
+        font-size: 25px;
+    }
+
+    .fa-solid{
+        font-size: 25px;
     }
 }

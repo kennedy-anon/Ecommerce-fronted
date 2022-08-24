@@ -88,11 +88,11 @@ export class AdminComponent implements OnInit {
 
   //add product
   addProduct(productForm :NgForm){
-    let categorieS;
+    let categorieS :string[];
     if (this.cat){
       categorieS = this.splitCat(); //converting categories to an array
     }else{
-      categorieS = this.cat;
+      categorieS = [];
     }
 
     const newProduct = {

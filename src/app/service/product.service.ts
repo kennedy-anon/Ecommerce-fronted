@@ -20,7 +20,11 @@ export class ProductService {
       const formData = new FormData();
       Object.entries(newProduct).forEach(
         ([key, value]: any[]) => {
-          formData.append(key, value);
+          if (key === "categories"){
+            value.forEach((category: string) => {formData.append("categories[]", category)});
+          }else{
+            formData.append(key, value);
+          }
         })
 
       return this.http.post('http://localhost:5000/api/products', formData, {headers: headers, observe: 'response'})
