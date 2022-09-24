@@ -15,17 +15,9 @@ export class ProductsComponent implements OnInit {
 
   constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
-    /*this.api.getProduct()
-    .subscribe(res=>{
-      this.productList = res;
-
-      this.productList.forEach((a: any) => {
-        Object.assign(a, {quantity:1, total:a.price});
-      });
-    })*/
-
-    this.productService.getProducts()
+  //Fetches products as specified in the category parameter
+  fetchProducts(category: string | null){
+    this.productService.getProducts(category)
     .subscribe(res=>{
       this.productList = res;
       this.productList.forEach((oneProduct: any) => {
@@ -41,6 +33,11 @@ export class ProductsComponent implements OnInit {
 
         });
     })
+  }
+
+  ngOnInit(): void {
+    //passing category as null fetches all products
+    this.fetchProducts(null);
   }
 
   addtocart(item: any){

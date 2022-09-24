@@ -32,8 +32,16 @@ export class ProductService {
     }
 
     //get products
-    getProducts(){
-      return this.http.get<any>("http://localhost:5000/api/products")
+    getProducts(category: string | null){
+      let queryParam;
+
+      if (category){
+        //for searching products in one category
+        queryParam = "?category="+category;
+      }else{
+        queryParam = "";
+      }
+      return this.http.get<any>("http://localhost:5000/api/products"+queryParam)
       .pipe(map((res:any)=>{
         return res;
       }))

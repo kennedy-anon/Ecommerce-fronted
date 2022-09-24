@@ -15,31 +15,31 @@
             </a>
         </div>
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']" [queryParams]="{ category: 'Electronics'}" (click)="fetchProducts('Electronics')">
                 <img src="./assets/categories/electronics.jfif" alt="">
                 <h6>Electronics</h6>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']" [queryParams]="{ category: 'Fashion'}" (click)="fetchProducts('Fashion')">
                 <img src="./assets/categories/fashion2.jfif" alt="">
                 <h6>Fashion</h6>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']" [queryParams]="{ category: 'Jewellery'}" (click)="fetchProducts('Jewellery')">
                 <img src="./assets/categories/jewel2.jfif" alt="">
                 <h6>Jewellery</h6>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']" [queryParams]="{ category: 'Men Fashion'}" (click)="fetchProducts('Men')">
                 <img src="./assets/categories/men.png" alt="">
                 <h6>Men Fashion</h6>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']" [queryParams]="{ category: 'Women Fashion'}" (click)="fetchProducts('Women')">
                 <img src="./assets/categories/women.png" alt="">
                 <h6>Women Fashion</h6>
             </a>
