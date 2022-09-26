@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/product.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -11,9 +12,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProductsComponent implements OnInit {
 
-  public productList: any;
+  public productList: any; 
+  categoryName!: string | null;
 
-  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar) { }
+  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar, private route: ActivatedRoute) { }
 
   //Fetches products as specified in the category parameter
   fetchProducts(category: string | null){
@@ -36,8 +38,17 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //passing category as null fetches all products
-    this.fetchProducts(null);
+    this.route.queryParams.subscribe(params => {
+      this.categoryName = params['category'];
+
+      if (this.categoryName){
+        this.fetchProducts(this.categoryName);
+      }else{
+        //passing category as null fetches all products
+        this.fetchProducts(null);
+      }
+    });
+    
   }
 
   addtocart(item: any){
