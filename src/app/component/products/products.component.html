@@ -3,13 +3,13 @@
 <div class="card-top container-fluid">
     <div class="container d-flex">
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']">
                 <img src="./assets/categories/all.png" alt="">
                 <h6>All Products</h6>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a [routerLink]="['/products']" [queryParams]="{ new: 'true'}">
                 <img src="./assets/categories/new.png" alt="">
                 <h6>New</h6>
             </a>

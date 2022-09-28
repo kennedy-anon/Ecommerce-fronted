@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/product.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -13,13 +12,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class ProductsComponent implements OnInit {
 
   public productList: any; 
-  categoryName!: string | null;
+  categoryName!: string | null; queryNew!: number;
+  queryMade!: string | null;
 
-  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar, private route: ActivatedRoute) { }
+  constructor(private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar, private route: ActivatedRoute) { }
 
-  //Fetches products as specified in the category parameter
-  fetchProducts(category: string | null){
-    this.productService.getProducts(category)
+  //Fetches products as specified by the query parameters
+  fetchProducts(queryPassed: string | null){
+    this.productService.getProducts(queryPassed)
     .subscribe(res=>{
       this.productList = res;
       this.productList.forEach((oneProduct: any) => {
@@ -40,11 +40,18 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.categoryName = params['category'];
+      this.queryNew = params['new'];
 
       if (this.categoryName){
-        this.fetchProducts(this.categoryName);
+        //fetches products by category name
+        this.queryMade = "?category="+this.categoryName;
+        this.fetchProducts(this.queryMade);
+      }else if(this.queryNew){
+        //fetches the new products
+        this.queryMade = "?new=true";
+        this.fetchProducts(this.queryMade);
       }else{
-        //passing category as null fetches all products
+        //fetches all products
         this.fetchProducts(null);
       }
     });
