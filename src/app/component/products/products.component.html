@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="card-top container-fluid">
-    <div class="container d-flex">
+    <div class="container d-flex" id="categoriesBar">
         <div class="item">
             <a [routerLink]="['/products']">
                 <img src="./assets/categories/all.png" alt="">
@@ -41,7 +41,7 @@
         <div class="item">
             <a [routerLink]="['/products']" [queryParams]="{ category: 'Women'}">
                 <img src="./assets/categories/women.png" alt="">
-                <h6>Women Fashion</h6>
+                <h6>Women</h6>
             </a>
         </div>
     </div>
@@ -50,7 +50,7 @@
 <div class="container">
     <div class="row">
         <ng-container *ngFor="let item of productList">
-            <div class="card col-md-3">
+            <div class="card col-md-2">
                 <img [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt="">
                 <h5 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.title }}</h5>
                 <p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.desc }}</p>
