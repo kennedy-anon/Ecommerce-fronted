@@ -1,3 +1,4 @@
+import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import { ProductService } from 'src/app/service/product.service';
@@ -11,6 +12,8 @@ export class ProductDetailsComponent implements OnInit {
 
   title!: string;
   productDetails: any;
+  stockLeft!: string;
+  stockColor : string="green";
 
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
@@ -26,7 +29,18 @@ export class ProductDetailsComponent implements OnInit {
       );
 
       this.productDetails.img.data = base64String;
-      console.log(this.productDetails);
+
+      if ((this.productDetails.size === "undefined") || (this.productDetails.size === "null")){
+        this.productDetails.size = "";
+      }
+
+      if (this.productDetails.count <= 10){
+        this.stockLeft = "Hurry, only a few left!"
+        this.stockColor ="red";
+      }else if(this.productDetails.count > 10){
+        this.stockLeft = "In stock."
+        this.stockColor ="green";
+      }
     })
   }
 

@@ -1,0 +1,27 @@
+.card-top{
+    background: #D6DBF6;
+    height: 54px;
+}
+
+.card-top h2{
+    padding-top: 10px;
+    padding-left: 100px;
+}
+
+.container img{
+    width: 300px;
+    height: 300px;
+}
+
+.d-flex mat-card{
+    margin: 0px 50px;
+}
+
+#desc{
+    margin: 10px 50px;
+}
+
+#price{
+    margin: 20px 0px;
+    font-weight: lighter;
+}
