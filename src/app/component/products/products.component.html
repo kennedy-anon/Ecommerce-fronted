@@ -51,9 +51,11 @@
     <div class="row">
         <ng-container *ngFor="let item of productList">
             <div class="card col-md-2">
-                <img [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt="">
-                <h5 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.title }}</h5>
-                <p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.desc }}</p>
+                <a routerLink="/products/{{ item.title }}">
+                    <img [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt="">
+                    <h5 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.title }}</h5>
+                    <p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.desc }}</p>
+                </a>
                 <p> <strong>Price</strong> KSh {{ item.price }}</p>
                 <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
             </div>

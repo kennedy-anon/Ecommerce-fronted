@@ -22,6 +22,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ProductDetailsComponent } from './component/products/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     RegisterComponent,
     LoginComponent,
     AdminComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

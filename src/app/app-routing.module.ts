@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
 import { CartComponent } from './component/cart/cart.component';
 import { LoginComponent } from './component/login/login.component';
+import { ProductDetailsComponent } from './component/products/product-details/product-details.component';
 import { ProductsComponent } from './component/products/products.component';
 import { RegisterComponent } from './component/register/register.component';
 import { AdminGuard } from './guards/admin.guard';
@@ -10,6 +11,7 @@ import { AdminGuard } from './guards/admin.guard';
 const routes: Routes = [
   {path: '', redirectTo: 'products', pathMatch:'full'},
   {path: 'products', component: ProductsComponent},
+  {path: 'products/:title', component: ProductDetailsComponent},
   {path: 'cart', component: CartComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
