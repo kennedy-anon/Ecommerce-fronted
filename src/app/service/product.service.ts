@@ -45,4 +45,12 @@ export class ProductService {
         return res;
       }))
     }
+
+    //get product by title
+    getProductByTitle(title: string){
+      return this.http.get<any>("http://localhost:5000/api/products/findByTitle/"+title)
+      .pipe(map((res:any)=>{
+        return res;
+      }))
+    }
 }
