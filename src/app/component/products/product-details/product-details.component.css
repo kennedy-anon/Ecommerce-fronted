@@ -25,3 +25,11 @@
     margin: 20px 0px;
     font-weight: lighter;
 }
+
+footer .text-white{
+    text-decoration: none;
+}
+
+footer .row{
+    padding: 0px 200px;
+}

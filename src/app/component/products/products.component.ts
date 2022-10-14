@@ -64,8 +64,6 @@ export class ProductsComponent implements OnInit {
       duration: 1000,
       panelClass: ['styleSnackBar'],
     });
-
-    
   }
 
 }
