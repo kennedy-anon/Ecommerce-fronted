@@ -1,6 +1,7 @@
 <app-header></app-header>
 
-<ng-container *ngIf="products.length != 0">
+<ng-container *ngIf="false">
+    <!-- *ngIf="products.length != 0" -->
     <div class="container">
         <div class="card-table">
             <div class="cart-product">
@@ -46,7 +47,53 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="products.length == 0">
+<ng-container *ngIf="true">
+    <div class="d-flex">
+        <div class="container border">
+            <mat-card *ngFor="let item of products;" style="width: 75%;" class="my-3 py-0">
+                <div class="d-flex" >
+                    <div class="container w-25"><img class="mt-3" style="width: 120px;" [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt=""></div>
+    
+                    <div class="container" >
+                        <mat-card-subtitle class="mt-3 fw-bold">{{ item.title }}</mat-card-subtitle>
+                        <mat-card-subtitle style="margin: 5px 0px;">Price: Ksh {{item.price}}</mat-card-subtitle>
+    
+                        <mat-card-actions>
+                            <button (click)="removeItem(item)" class="btn btn-danger" style="margin: 10px;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="btn btn-primary" style="margin: 0% 3% 0% 55%;"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            {{item.quantity}}
+                            <button class="btn btn-primary" style="margin: 0% 10% 0% 3%;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </mat-card-actions>
+                    </div>
+                </div>
+    
+            </mat-card>
+    
+        </div>
+    
+        <div class="container border w-25">
+            <mat-card>
+                <mat-card-title>Cart Details</mat-card-title>
+                <hr>
+                <mat-card-subtitle class="d-flex justify-content-between">Total Price (10 Items)<mat-card-subtitle class="my-auto">KSh {{grandTotal}}</mat-card-subtitle></mat-card-subtitle>
+
+                <mat-card-subtitle class="d-flex justify-content-between">Delivery Charges<mat-card-subtitle class="my-auto">FREE</mat-card-subtitle></mat-card-subtitle>
+
+                <hr>
+                <mat-card-subtitle class="d-flex justify-content-between">Grand Total<mat-card-subtitle class="my-auto">KSh {{grandTotal}}</mat-card-subtitle></mat-card-subtitle>
+                <hr>
+                <mat-card-actions class="d-flex justify-content-center">               
+                    <button class="btn btn-success w-75 mb-3">Checkout</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+</ng-container>
+
+
+<ng-container *ngIf="false">
+    <!--*ngIf="products.length == 0"-->
     <div class="container">
         <div class="card">
             <h5 class="card-title">My Cart</h5>
