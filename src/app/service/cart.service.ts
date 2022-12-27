@@ -24,18 +24,36 @@ export class CartService {
     const currentItem = this.cartItemList.find((item: any) => item._id === product._id);
     if (currentItem){
       //Increments the quantity for a product arleady in cart
-      this.cartItemList.map((item:any)=>{
-        if (product._id == item._id){
-          item.quantity += 1;
-          item.total = item.quantity * item.price;
-        }
-      })
+      this.incrementProductQuantity(product);
     }else{
       this.cartItemList.push(product);
     }
 
     this.productList.next(this.cartItemList);
-    this.getTotalPrice();
+  }
+
+  //increments the quantity for a product
+  incrementProductQuantity(product: any){
+    this.cartItemList.map((item:any)=>{
+      if (product._id == item._id){
+        item.quantity += 1;
+        item.total = item.quantity * item.price;
+      }
+    })
+
+    this.productList.next(this.cartItemList);
+  }
+
+  //decrements the quantity for a product
+  decrementProductQuantity(product: any){
+    this.cartItemList.map((item:any)=>{
+      if ((product._id == item._id) && (item.quantity > 1)){
+        item.quantity -= 1;
+        item.total = item.quantity * item.price;
+      }
+    })
+
+    this.productList.next(this.cartItemList);
   }
 
   getTotalPrice() : number{
@@ -44,6 +62,15 @@ export class CartService {
       grandTotal += item.total;
     })
     return grandTotal;
+  }
+
+  //counts the number of items in the cart
+  getItemCount() : number{
+    let itemCount = 0;
+    this.cartItemList.map((item:any)=>{
+      itemCount += item.quantity;
+    })
+    return itemCount;
   }
 
   removeCartItem(product: any){

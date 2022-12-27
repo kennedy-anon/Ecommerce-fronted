@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getProducts()
     .subscribe(res=>{
-      this.totalItem = res.length;
+      //this.totalItem = res.length;
+      this.totalItem = this.cartService.getItemCount();
     })
 
     //mobile responsiveness

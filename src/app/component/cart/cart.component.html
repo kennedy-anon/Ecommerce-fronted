@@ -1,68 +1,32 @@
 <app-header></app-header>
 
-<ng-container *ngIf="false">
-    <!-- *ngIf="products.length != 0" -->
-    <div class="container">
-        <div class="card-table">
-            <div class="cart-product">
-                <table class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Sr.No</th>
-                            <th>Product Name</th>
-                            <th>Product Image</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-    
-                    <tbody>
-                        <tr *ngFor="let item of products; let i = index">
-                            <td>{{i+1}}</td>
-                            <td>{{item.title}}</td>
-                            <td><img style="width: 120px;" [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt=""></td>
-                            <td style="width: 25%; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 50ch;">{{item.desc}}</td>
-                            <td style="width: 12%;">{{item.price}}</td>
-                            <td style="width: 12%;">{{item.quantity}}</td>
-                            <td style="width: 12%;">{{item.total}}</td>
-                            <td>
-                                <button (click)="removeItem(item)" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="4"></td>
-                            <td><button (click)="emptyCart()" class="btn btn-danger">Empty Cart</button></td>
-                            <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-                            <td><button class="btn btn-success">Checkout</button></td>
-                            <td><strong>Grand Total : Ksh {{grandTotal}}</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</ng-container>
-
 <ng-container *ngIf="true">
-    <div class="d-flex">
-        <div class="container border">
-            <mat-card *ngFor="let item of products;" style="width: 75%;" class="my-3 py-0">
+    <!-- *ngIf="products.length != 0" -->
+    <div class="d-flex mx-5">
+        <div class="container" style="width: 65%;">
+            <mat-card style="width: 95%;" class="mx-auto mt-3">
+                <mat-card-title>Cart ({{itemCount}} Items)</mat-card-title>
+            </mat-card>
+
+            <mat-card *ngFor="let item of products;" style="width: 95%;" class="my-3 py-0 mx-auto">
                 <div class="d-flex" >
-                    <div class="container w-25"><img class="mt-3" style="width: 120px;" [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt=""></div>
+                    <div class="container w-25">
+                        <a routerLink="/products/{{ item.title }}">
+                            <img class="mt-3" style="width: 120px;" [src]="'data:'+item.img.contentType+';base64,'+item.img.data | safeHtml" alt="">
+                        </a>
+                    </div>
     
                     <div class="container" >
-                        <mat-card-subtitle class="mt-3 fw-bold">{{ item.title }}</mat-card-subtitle>
-                        <mat-card-subtitle style="margin: 5px 0px;">Price: Ksh {{item.price}}</mat-card-subtitle>
-    
+                        <a routerLink="/products/{{ item.title }}" id="cartItemLink">
+                            <mat-card-subtitle class="mt-3 fw-bold">{{ item.title }}</mat-card-subtitle>
+                            <mat-card-subtitle style="margin: 5px 0px;">Price: Ksh {{item.price}}</mat-card-subtitle>
+                        </a>
+                        
                         <mat-card-actions>
-                            <button (click)="removeItem(item)" class="btn btn-danger" style="margin: 10px;"><i class="fa-solid fa-trash-can"></i></button>
-                            <button class="btn btn-primary" style="margin: 0% 3% 0% 55%;"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <button (click)="removeItem(item)" class="btn btn-danger" style="margin-left: 3%;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button (click)="decrementItemQuantity(item)" class="btn btn-primary" style="margin: 0% 3% 0% 55%;"><i class="fa fa-minus" aria-hidden="true"></i></button>
                             {{item.quantity}}
-                            <button class="btn btn-primary" style="margin: 0% 10% 0% 3%;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            <button (click)="incrementItemQuantity(item)" class="btn btn-primary" style="margin: 0% 10% 0% 3%;"><i class="fa fa-plus" aria-hidden="true"></i></button>
                         </mat-card-actions>
                     </div>
                 </div>
@@ -71,11 +35,11 @@
     
         </div>
     
-        <div class="container border w-25">
-            <mat-card>
+        <div class="container w-25">
+            <mat-card class="mt-3">
                 <mat-card-title>Cart Details</mat-card-title>
                 <hr>
-                <mat-card-subtitle class="d-flex justify-content-between">Total Price (10 Items)<mat-card-subtitle class="my-auto">KSh {{grandTotal}}</mat-card-subtitle></mat-card-subtitle>
+                <mat-card-subtitle class="d-flex justify-content-between">Total Price ({{itemCount}} Items)<mat-card-subtitle class="my-auto">KSh {{grandTotal}}</mat-card-subtitle></mat-card-subtitle>
 
                 <mat-card-subtitle class="d-flex justify-content-between">Delivery Charges<mat-card-subtitle class="my-auto">FREE</mat-card-subtitle></mat-card-subtitle>
 
@@ -90,7 +54,6 @@
     </div>
 
 </ng-container>
-
 
 <ng-container *ngIf="false">
     <!--*ngIf="products.length == 0"-->
