@@ -11,9 +11,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
 
-  public productList: any; 
+  public productList: any = []; 
   categoryName!: string | null; queryNew!: number;
   queryMade!: string | null;
+  displayProgressBar : boolean = false;
 
   constructor(private cartService: CartService, private productService: ProductService, private _snackBar: MatSnackBar, private route: ActivatedRoute) { }
 
@@ -34,11 +35,14 @@ export class ProductsComponent implements OnInit {
         Object.assign(oneProduct, {quantity:1, total:oneProduct.price});
 
         });
+      
+      this.deactivateProgressBar();
     })
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
+      this.activateProgressBar();
       this.categoryName = params['category'];
       this.queryNew = params['new'];
 
@@ -64,6 +68,14 @@ export class ProductsComponent implements OnInit {
       duration: 1000,
       panelClass: ['styleSnackBar'],
     });
+  }
+
+  activateProgressBar(){
+    this.displayProgressBar = true;
+  }
+
+  deactivateProgressBar(){
+    this.displayProgressBar = false;
   }
 
 }

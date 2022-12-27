@@ -24,6 +24,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ProductDetailsComponent } from './component/products/product-details/product-details.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { FooterComponent } from './component/footer/footer.component';
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
   bootstrap: [AppComponent]
