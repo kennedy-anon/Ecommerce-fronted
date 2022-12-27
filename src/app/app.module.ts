@@ -23,6 +23,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ProductDetailsComponent } from './component/products/product-details/product-details.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProductDetailsComponent } from './component/products/product-details/pr
     LoginComponent,
     AdminComponent,
     SafeHtmlPipe,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

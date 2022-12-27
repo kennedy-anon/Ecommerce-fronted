@@ -41,3 +41,7 @@ h4, h6{
 #cartItemLink:hover mat-card-subtitle{
     color: blue;
 }
+
+.position-sticky {
+    top: 0;
+  }
