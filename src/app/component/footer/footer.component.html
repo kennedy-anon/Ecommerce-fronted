@@ -1,39 +1,35 @@
-<footer class="" style="background: #052150;">
-    <div class="container text-center text-md-start mt-3" style="background: #052150;">
+<footer style="background: #052150;">
+    <div class="container text-sm-center text-md-start my-3" style="background: #052150;">
         <div class="row pt-4">
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-1">
-                <p>                
-                    <a class="text-white" [routerLink]="['/products']" [queryParams]="{ new: 'true'}">New Products</a>
-                </p>
-
-                <p>                
-                    <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Electronics'}">Electronics</a>
-                </p>
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+                <a class="text-white" [routerLink]="['/products']" [queryParams]="{ new: 'true'}">New Products</a>
             </div>
 
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-1">
-                <p>                
-                    <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Fashion'}">Fashion</a>
-                </p>
-
-                <p>                
-                    <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Jewellery'}">Jewellery</a>
-                </p>
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+                <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Fashion'}">Fashion</a>
             </div>
 
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-1">
-                <p>
-                    <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Men'}">Men Fashion</a>
-                </p>
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+                <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Men'}">Men Fashion</a>
+            </div>
+        </div>
 
-                <p>
-                    <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Women'}">Women Fashion</a>
-                </p>
+        <div class="row pt-4">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+                <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Electronics'}">Electronics</a>
+            </div>
+    
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+                <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Jewellery'}">Jewellery</a>
+            </div>
+    
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
+                <a class="text-white" [routerLink]="['/products']" [queryParams]="{ category: 'Women'}">Women Fashion</a>
             </div>
         </div>
     </div>
 
-    <hr class="mb-0 mt-0" style="background: white;">
+    <hr class="my-0" style="background: white;">
 
     <div class="text-center p-3 text-white">
         &copy; 2022 Copyright:
