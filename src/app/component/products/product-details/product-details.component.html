@@ -1,18 +1,18 @@
 <app-header></app-header>
 
-<div class="card-top container-fluid">
-    <h2>Product Details</h2>
+<div class="border container-fluid">
+    <h2 class="pt-2">Product Details</h2>
 </div>
 
 <div class="container">
-    <div class="d-flex">
-        <mat-card>
+    <div id="itemOverview">
+        <mat-card id="image-card">
             <img [src]="'data:'+productDetails?.img.contentType+';base64,'+productDetails?.img.data | safeHtml" alt="">
         </mat-card>
     
-        <mat-card>
+        <mat-card class="" id="brief-desc">
             <mat-card-title>{{ productDetails?.title }}</mat-card-title>
-            <mat-card-title id="price">
+            <mat-card-title id="price" class="my-3">
                 Price: Ksh {{ productDetails?.price }}
             </mat-card-title>
             <mat-card-subtitle>
@@ -26,11 +26,11 @@
                 {{ stockLeft }}
             </mat-card-subtitle>
 
-            <button class="btn btn-primary" (click)=addtocart(productDetails) style="width: 80%; display: block; margin: 40px auto;">Add to cart</button>
+            <button class="btn btn-primary" (click)=addtocart(productDetails)>Add to cart</button>
         </mat-card>
     </div>
 
-    <mat-card id="desc">
+    <mat-card id="description">
         <mat-card-title>Product Description</mat-card-title>
         <mat-card-content>
             <p>{{ productDetails?.desc }}</p>
