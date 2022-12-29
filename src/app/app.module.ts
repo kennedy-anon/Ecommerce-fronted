@@ -26,6 +26,7 @@ import { ProductDetailsComponent } from './component/products/product-details/pr
 import { FooterComponent } from './component/footer/footer.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CheckoutComponent } from './component/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AdminComponent,
     SafeHtmlPipe,
     ProductDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

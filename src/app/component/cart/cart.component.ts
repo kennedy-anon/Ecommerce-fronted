@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { CartService } from 'src/app/service/cart.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit {
   public grandTotal !: number;
   itemCount: number = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -37,6 +39,14 @@ export class CartComponent implements OnInit {
 
   decrementItemQuantity(item: any){
     this.cartService.decrementProductQuantity(item);
+  }
+
+  checkOut(){
+    if (this.authService.isNotExpired()){
+      this.route.navigate(['/checkout']);
+    }else{
+      this.route.navigate(['/login']);
+    }
   }
 
 }

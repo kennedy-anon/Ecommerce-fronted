@@ -18,6 +18,7 @@
 
     
         <button class="btn btn-primary" type="button" mat-button [matMenuTriggerFor]="menu" id="accounts">
+            <span>{{this.userName}}&nbsp;</span>
             <i class="fa-solid fa-user"></i>
 
             <mat-menu #menu="matMenu">
@@ -31,7 +32,7 @@
                     <span>Create Account</span>
                 </button>
 
-                <button mat-menu-item>
+                <button mat-menu-item mat-icon-button (click)="logout()">
                   <mat-icon>exit_to_app</mat-icon>
                   <span>Log out</span>
                 </button>

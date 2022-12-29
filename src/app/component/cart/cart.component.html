@@ -46,7 +46,7 @@
                 <mat-card-subtitle class="d-flex justify-content-between">Grand Total<mat-card-subtitle class="my-auto">KSh {{grandTotal}}</mat-card-subtitle></mat-card-subtitle>
                 <hr>
                 <mat-card-actions class="d-flex justify-content-center">               
-                    <button class="btn btn-success w-75 mb-3">Checkout</button>
+                    <button (click)="checkOut()" class="btn btn-success w-75 mb-3">Checkout</button>
                 </mat-card-actions>
             </mat-card>
         </div>

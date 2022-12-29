@@ -38,9 +38,11 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['/admin']);
 
       }else if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin == false)){
-        console.log("Granted access with no admin priviledges");
+        localStorage.setItem('user_id', this.fResponse.body._id);
+        //console.log("Granted access with no admin priviledges");
         this.response = "Success";
         this.color1 = "green";
+        this.route.navigate(['/cart']);
       }
 
     }, (error)=>{
