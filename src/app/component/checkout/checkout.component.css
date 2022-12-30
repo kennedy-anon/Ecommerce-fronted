@@ -1,0 +1,14 @@
+mat-card-content{
+    font-style: italic;
+    font-size: x-small;
+    font-weight: lighter;
+}
+
+.btn {
+    display: block;
+  }
+
+.container-fluid{
+    border-radius: 10px;
+    background: rgba(217, 217, 217, 0.3);
+}

@@ -32,14 +32,14 @@ export class LoginComponent implements OnInit {
 
       //Checking access priviledges
       if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin)) {
-        //console.log("Admin access granted");
+        //Admin access granted
         this.response = "Success";
         this.color1 = "green";
         this.route.navigate(['/admin']);
 
       }else if ((this.fResponse.status == 200) && (this.fResponse.body.isAdmin == false)){
         localStorage.setItem('user_id', this.fResponse.body._id);
-        //console.log("Granted access with no admin priviledges");
+        //access with no admin priviledges
         this.response = "Success";
         this.color1 = "green";
         this.route.navigate(['/cart']);
