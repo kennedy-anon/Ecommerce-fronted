@@ -27,6 +27,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CheckoutComponent } from './component/checkout/checkout.component';
+import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CheckoutComponent } from './component/checkout/checkout.component';
     SafeHtmlPipe,
     ProductDetailsComponent,
     FooterComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,

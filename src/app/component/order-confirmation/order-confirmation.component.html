@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<ng-container *ngIf="!isEmpty()">
+    <mat-card class="mx-auto my-3" style="background: #E9E1E1; width: 30%">
+        <mat-card-title class="mt-3">Your order has been received</mat-card-title>
+        <i class="fa-solid fa-check-circle mt-5" aria-hidden="true"></i>
+        <mat-card-content>
+            <h3 class="mt-1">Thank you for your purchase!</h3>
+            <h4>Your order ID is: {{orderDetails.body._id}}</h4>
+            <h4>Order Amount: Ksh {{orderDetails.body.amount}}</h4>
+            <div class="d-flex">
+                <h4 class="mx-auto">Delivery Address: {{orderDetails.body.address}}</h4>
+                <a href="" class="mx-auto"><h4>View Order summary</h4></a>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button [routerLink]="['/products']" class="btn btn-primary w-75 mb-5">Continue Shopping</button>
+        </mat-card-actions>
+    </mat-card>
+</ng-container>
+
+<ng-container *ngIf="isEmpty()">
+    <mat-card class="h-75">
+        <mat-spinner class="mx-auto mt-5"></mat-spinner>
+        <h5>Placing Order...</h5>
+    </mat-card>
+</ng-container>
+
+
+<app-footer></app-footer>

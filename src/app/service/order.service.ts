@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
+
+  orderDetails = new BehaviorSubject<any>({});
 
   constructor(private http: HttpClient) { }
 
@@ -35,6 +37,14 @@ placeOrder(products: any, grandTotal: number, address: string){
   }
 
   return this.http.post('http://localhost:5000/api/orders', order, {headers: headers, observe: 'response'})
-    .pipe(map(res => res));
+    .pipe(map(res =>{ 
+      this.orderDetails.next(res);
+      }));
+  }
+
+  //get order details
+  getOrderDetails(){
+    return this.orderDetails.asObservable();
+  }
 }
-}
+

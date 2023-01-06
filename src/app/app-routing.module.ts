@@ -4,6 +4,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { CartComponent } from './component/cart/cart.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { LoginComponent } from './component/login/login.component';
+import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
 import { ProductDetailsComponent } from './component/products/product-details/product-details.component';
 import { ProductsComponent } from './component/products/products.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent, canActivate:[AdminGuard]},
-  {path: 'checkout', component: CheckoutComponent, canActivate:[CheckoutGuard]}
+  {path: 'checkout', component: CheckoutComponent, canActivate:[CheckoutGuard]},
+  {path: 'orderConfirmation', component: OrderConfirmationComponent},
 ];
 
 @NgModule({

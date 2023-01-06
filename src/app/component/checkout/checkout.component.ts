@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { OrderService } from 'src/app/service/order.service';
 
@@ -13,7 +14,7 @@ export class CheckoutComponent implements OnInit {
   itemCount: number = 0;
   products: any;
 
-  constructor(private cartService: CartService, private orderService: OrderService) { }
+  constructor(private cartService: CartService, private orderService: OrderService, private route: Router) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -28,8 +29,10 @@ export class CheckoutComponent implements OnInit {
     if (this.itemCount != 0){
       this.orderService.placeOrder(products, grandTotal, address)
       .subscribe(res =>{
-      console.log(res);
+      //console.log(res);
+      this.cartService.removeAllCart();
       });
+      this.route.navigate(['/orderConfirmation']);
     }else{
       window.alert('Your Cart is empty. Kindly add to cart items to order.');
     }
