@@ -28,6 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { OrderConfirmationComponent } from './component/order-confirmation/order-confirmation.component';
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { OrderConfirmationComponent } from './component/order-confirmation/order
     ProductDetailsComponent,
     FooterComponent,
     CheckoutComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
