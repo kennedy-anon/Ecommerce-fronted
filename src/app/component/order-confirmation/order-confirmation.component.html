@@ -10,7 +10,7 @@
             <h4>Order Amount: Ksh {{orderDetails.body.amount}}</h4>
             <div class="d-flex">
                 <h4 class="mx-auto">Delivery Address: {{orderDetails.body.address}}</h4>
-                <a href="" class="mx-auto"><h4>View Order summary</h4></a>
+                <a [routerLink]="['/orderHistory']" class="mx-auto"><h4>View Order summary</h4></a>
             </div>
         </mat-card-content>
         <mat-card-actions>

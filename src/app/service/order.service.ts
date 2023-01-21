@@ -11,16 +11,22 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  //placing order
-  placeOrder(products: any, grandTotal: number, address: string){
+  //set headers with access token
+  setRequestHeaders(){
     const access_token = localStorage.getItem('access_token');
-    const userId = localStorage.getItem('user_id');
-
     var headers = new HttpHeaders({
       'token': `Bearer ${access_token}`
     });
 
     headers.append('Content-type', 'application/json');
+
+    return headers
+  }
+
+  //placing order
+  placeOrder(products: any, grandTotal: number, address: string){
+    const userId = localStorage.getItem('user_id');
+    var headers = this.setRequestHeaders();
 
     let items: { [key: string]: any }[] = [];
 
@@ -47,13 +53,28 @@ export class OrderService {
     return this.orderDetails.asObservable();
   }
 
-  //fetch user orders by userId.... start here
-  getUserOrders(userId: string){
-    var headers = new HttpHeaders();
-    headers.append('Content-type', 'application/json');
-    return this.http.get<any>("http://localhost:5000/api/products/findByTitle/"+userId)
+  //counts the number of items in an order
+  getItemCount(orderHistory: any=[]) : number{
+    orderHistory.map((order:any)=>{
+      let itemCount = 0;
+      order.products.map((product:any)=>{
+        itemCount += product.quantity
+      })
+
+      //appending item count on each order
+      Object.assign(order, {itemCount: itemCount});
+    })
+    return orderHistory;
+  }
+
+  //fetch user orders by userId
+  getUserOrders(){
+    const id = localStorage.getItem('user_id');
+    var headers = this.setRequestHeaders();
+
+    return this.http.get<any>("http://localhost:5000/api/orders/find/"+id, {headers: headers})
       .pipe(map((res:any)=>{
-        return res;
+        return this.getItemCount(res);
       }))
   }
 }
