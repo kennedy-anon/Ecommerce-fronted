@@ -1,0 +1,29 @@
+mat-card .btn{
+    background: #D9D9D9; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #3B71CA;
+}
+
+.fa-chevron-circle-down{
+    margin-left: .5rem
+}
+
+mat-card mat-card-header{
+    border-radius: 10px 10px 0px 0px;
+    background: #C5E3ED;
+    padding-top: 1rem;
+}
+
+mat-card mat-card-content{
+    margin-left: 2rem;
+}
+
+mat-card mat-card-actions{
+    margin-left: 2rem;
+}
+
+#orders{
+    border-radius: 10px;
+    background: rgba(197, 227, 237, 0.2);
+}

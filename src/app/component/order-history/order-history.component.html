@@ -1,1 +1,47 @@
-<p>order-history works!</p>
+<app-header></app-header>
+
+<ng-container *ngIf="orderHistory.length != 0">
+    <div class="container">
+        <mat-card class="mt-2" style="background: #C5E3ED;">
+            <mat-card-title>Order History</mat-card-title>
+        </mat-card>
+
+        <ng-container *ngFor="let order of orderHistory">
+            <mat-card class="mt-5 w-50 mx-auto" id="orders">
+                <mat-card-header>
+                    <h4>Order Id: {{order._id}}</h4>
+                    <h4 class="mx-auto">{{order.createdAt}}</h4>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div class="d-flex">
+                        <h4>{{order.itemCount}} Items</h4>
+                        <h4 class="mx-auto">Amount: KSh {{order.amount}}</h4>
+                    </div>
+
+                    <div class="d-flex">
+                        <h4>Delivery Address: {{order.address}}</h4>
+                        <h4 class="mx-auto">Status: {{order.status}}</h4>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button class="btn">View Items<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+                </mat-card-actions>
+
+            </mat-card>
+        </ng-container>
+        
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="orderHistory.length == 0">
+    <mat-card class="w-50 mx-auto h-75 mt-3">
+        <mat-card-title>Orders</mat-card-title>
+        <mat-card-content>No Orders Yet</mat-card-content>
+    </mat-card>
+</ng-container>
+
+
+<app-footer></app-footer>

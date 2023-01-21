@@ -22,8 +22,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent, canActivate:[AdminGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate:[CheckoutGuard]},
-  {path: 'orderConfirmation', component: OrderConfirmationComponent},
-  {path: 'orderHistory', component: OrderHistoryComponent}
+  {path: 'orderConfirmation', component: OrderConfirmationComponent, canActivate:[CheckoutGuard]},
+  {path: 'orderHistory', component: OrderHistoryComponent, canActivate:[CheckoutGuard]}
 ];
 
 @NgModule({

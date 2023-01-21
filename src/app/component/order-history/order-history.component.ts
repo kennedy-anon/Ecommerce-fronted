@@ -7,7 +7,7 @@ import { OrderService } from 'src/app/service/order.service';
   styleUrls: ['./order-history.component.css']
 })
 export class OrderHistoryComponent implements OnInit {
-  orderHistory: any;
+  orderHistory: any=[];
 
   constructor(private orderService: OrderService) { }
 
