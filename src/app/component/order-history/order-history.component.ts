@@ -18,4 +18,9 @@ export class OrderHistoryComponent implements OnInit {
     })
   }
 
+  // view order items
+  viewOrderItems(orderID: string){
+    console.log(orderID);
+  }
+
 }
