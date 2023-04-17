@@ -52,6 +52,10 @@
                     
                 </ng-container>
 
+                <mat-card-footer *ngIf="(loadingDetails && (loadingId === order._id))">
+                    <mat-progress-bar mode="indeterminate" style="border-radius: 10px;"></mat-progress-bar>
+                </mat-card-footer>
+
             </mat-card>
             
         </ng-container>

@@ -9,6 +9,8 @@ import { OrderService } from 'src/app/service/order.service';
 export class OrderHistoryComponent implements OnInit {
   orderHistory: any=[];
   orderDetails: any;
+  loadingDetails: boolean = false;
+  loadingId!: string;
 
   constructor(private orderService: OrderService) { }
 
@@ -20,8 +22,12 @@ export class OrderHistoryComponent implements OnInit {
 
   // view order items
   viewOrderItems(orderID: string){
+    this.loadingDetails = true; // show progress bar
+    this.loadingId = orderID;
+
     this.orderService.getProductDetails(orderID).subscribe(res => {
       this.orderDetails = res;
+      this.loadingDetails = false; // stop progress bar
     })
   }
 
