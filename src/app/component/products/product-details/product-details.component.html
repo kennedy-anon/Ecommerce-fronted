@@ -21,7 +21,7 @@
         <mat-card class="" id="brief-desc">
             <mat-card-title>{{ productDetails?.title }}</mat-card-title>
             <mat-card-title id="price" class="my-3">
-                Price: Ksh {{ productDetails?.price }}
+                Price: Ksh {{ productDetails?.price | number:'1.0-0' }}
             </mat-card-title>
             <mat-card-subtitle>
                 Color: {{ productDetails?.color }}

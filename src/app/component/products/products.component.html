@@ -58,7 +58,7 @@
                     <h5 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.title }}</h5>
                     <p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{ item.desc }}</p>
                 </a>
-                <p> <strong>Price</strong> KSh {{ item.price }}</p>
+                <p> <strong>Price</strong> KSh {{ item.price | number:'1.0-0' }}</p>
                 <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
             </div>
         </ng-container>

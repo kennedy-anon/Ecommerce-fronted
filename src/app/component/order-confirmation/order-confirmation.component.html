@@ -7,7 +7,7 @@
         <mat-card-content>
             <h3 class="mt-1">Thank you for your purchase!</h3>
             <h4>Your order ID is: {{orderDetails.body._id}}</h4>
-            <h4>Order Amount: Ksh {{orderDetails.body.amount}}</h4>
+            <h4>Order Amount: Ksh {{orderDetails.body.amount | number:'1.0-0'}}</h4>
             <div class="d-flex">
                 <h4 class="mx-auto">Delivery Address: {{orderDetails.body.address}}</h4>
                 <a [routerLink]="['/orderHistory']" class="mx-auto"><h4>View Order summary</h4></a>
