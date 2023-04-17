@@ -4,7 +4,15 @@
     <h2 class="pt-2">Product Details</h2>
 </div>
 
-<div class="container">
+<!-- when loading details -->
+<div class="container mx-auto" style="height: 55vh;" *ngIf="(productDetails === undefined)">
+    <mat-spinner class="mx-auto mt-5"></mat-spinner>
+    <h4 class="text-center mt-1">Product Details...</h4>
+</div>
+
+
+<!-- after details have been loaded -->
+<div class="container" *ngIf="productDetails != undefined">
     <div id="itemOverview">
         <mat-card id="image-card">
             <img [src]="'data:'+productDetails?.img.contentType+';base64,'+productDetails?.img.data | safeHtml" alt="">
