@@ -31,6 +31,27 @@
                     <button class="btn" (click)="viewOrderItems(order._id)">View Items<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
                 </mat-card-actions>
 
+                <ng-container *ngIf="((orderDetails != undefined) && (orderDetails[0]._id === order._id))">
+                    <!-- displays the product details of a particular order  -->
+                    <ng-container *ngFor="let product of orderDetails[0].products">
+                        <div class="container d-flex mb-3">
+                            <!-- product image -->
+                            <div class="container w-25">
+                                <img style="width: 120px; border: 5px;" [src]="'data:'+product.img.contentType+';base64,'+product.img.data | safeHtml" alt="Item">
+                            </div>
+
+                            <!-- product details -->
+                            <div class="container w-75">
+                                <h4>{{ product.title }}</h4>
+                                <h5>KSh {{ product.price | number:'1.0-0' }}</h5>
+                                <h5>Quantity: {{ product.quantity }}</h5>
+                            </div>
+                        </div>
+
+                    </ng-container>
+                    
+                </ng-container>
+
             </mat-card>
             
         </ng-container>

@@ -77,5 +77,14 @@ export class OrderService {
         return this.getItemCount(res);
       }))
   }
+
+  //get product details for a particular order ...using oderId
+  getProductDetails(orderId: string) {
+    const id = localStorage.getItem('user_id');
+    var headers = this.setRequestHeaders();
+
+    return this.http.get<any>("http://localhost:5000/api/orders/productList/"+id+"?orderId="+orderId, {headers: headers})
+    .pipe(map(res => res));
+  }
 }
 

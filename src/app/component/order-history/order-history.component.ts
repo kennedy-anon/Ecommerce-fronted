@@ -8,19 +8,21 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistory: any=[];
+  orderDetails: any;
 
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.orderService.getUserOrders().subscribe(res=>{
       this.orderHistory = res;
-      console.log(this.orderHistory);
     })
   }
 
   // view order items
   viewOrderItems(orderID: string){
-    console.log(orderID);
+    this.orderService.getProductDetails(orderID).subscribe(res => {
+      this.orderDetails = res;
+    })
   }
 
 }
