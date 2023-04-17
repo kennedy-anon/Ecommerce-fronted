@@ -42,7 +42,9 @@
 
                             <!-- product details -->
                             <div class="container w-75">
-                                <h4>{{ product.title }}</h4>
+                                <a routerLink="/products/{{ product.title }}" id="itemLink">
+                                    <h4>{{ product.title }}</h4>
+                                </a>
                                 <h5>KSh {{ product.price | number:'1.0-0' }}</h5>
                                 <h5>Quantity: {{ product.quantity }}</h5>
                             </div>

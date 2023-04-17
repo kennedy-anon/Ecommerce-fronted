@@ -27,3 +27,12 @@ mat-card mat-card-actions{
     border-radius: 10px;
     background: rgba(197, 227, 237, 0.2);
 }
+
+#itemLink {
+    text-decoration: none;
+    color: black;
+}
+
+#itemLink:hover {
+    color: blue;
+}
