@@ -10,6 +10,7 @@ export class OrderHistoryComponent implements OnInit {
   orderHistory: any=[];
   orderDetails: any;
   loadingDetails: boolean = false;
+  fetchingOrders: boolean = true; // spinner for loading orders
   loadingId!: string;
 
   constructor(private orderService: OrderService) { }
@@ -17,6 +18,7 @@ export class OrderHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getUserOrders().subscribe(res=>{
       this.orderHistory = res;
+      this.fetchingOrders = false;  // stop loading spinner
     })
   }
 

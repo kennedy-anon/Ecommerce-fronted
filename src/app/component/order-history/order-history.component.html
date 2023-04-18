@@ -1,11 +1,12 @@
 <app-header></app-header>
 
+<!-- orders available -->
 <ng-container *ngIf="orderHistory.length != 0">
     <mat-card class="" style="background: #C5E3ED;">
         <mat-card-title style="margin-left: 23rem;">Order History</mat-card-title>
     </mat-card>
 
-    <div class="container">
+    <div class="container"  style="min-height: 55vh;">
         <ng-container *ngFor="let order of orderHistory.reverse()">
             <mat-card class="mt-4 w-50 mx-auto" id="orders">
 
@@ -66,7 +67,14 @@
 
 </ng-container>
 
-<ng-container *ngIf="orderHistory.length == 0">
+<!-- when fetching orders -->
+<div class="container mx-auto" id="loading" style="height: 70vh;" *ngIf="(fetchingOrders && (orderHistory.length == 0))">
+    <mat-spinner class="mx-auto mt-5"></mat-spinner>
+    <h4 class="mt-1">Orders...</h4>
+</div>
+
+<!-- Zero orders -->
+<ng-container *ngIf="(!fetchingOrders && (orderHistory.length == 0))">
     <mat-card class="w-50 mx-auto h-75 mt-3" id="emptyOrders">
         <mat-card-title>Orders</mat-card-title>
         <mat-card-content class="mx-auto">
@@ -79,6 +87,5 @@
             
     </mat-card>
 </ng-container>
-
 
 <app-footer></app-footer>

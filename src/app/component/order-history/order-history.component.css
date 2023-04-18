@@ -54,7 +54,7 @@ mat-card mat-card-actions{
     background: #D9D9D9;
 }
 
-#emptyOrders mat-card-content{
+#emptyOrders mat-card-content, #loading{
     display: flex;
     flex-direction: column;
     align-items: center;
