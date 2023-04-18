@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
 
       if (this.fullResponse.status == 201){
         this.color1 = "green";
-        this.response = "Success!";
+        this.response = "Account created successfully!";
         //console.log("success");
       }
     }, (error)=>{

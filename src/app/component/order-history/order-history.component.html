@@ -6,7 +6,7 @@
     </mat-card>
 
     <div class="container">
-        <ng-container *ngFor="let order of orderHistory">
+        <ng-container *ngFor="let order of orderHistory.reverse()">
             <mat-card class="mt-4 w-50 mx-auto" id="orders">
 
                 <mat-card-header>
@@ -67,9 +67,16 @@
 </ng-container>
 
 <ng-container *ngIf="orderHistory.length == 0">
-    <mat-card class="w-50 mx-auto h-75 mt-3">
+    <mat-card class="w-50 mx-auto h-75 mt-3" id="emptyOrders">
         <mat-card-title>Orders</mat-card-title>
-        <mat-card-content>No Orders Yet</mat-card-content>
+        <mat-card-content class="mx-auto">
+            <span class="material-symbols-outlined mb-5">
+                list_alt_add
+                </span>
+            <p class="">You haven't made any order yet.</p>
+            <button class="btn mx-auto" routerLink="/products">Shop Now</button>
+        </mat-card-content>
+            
     </mat-card>
 </ng-container>
 

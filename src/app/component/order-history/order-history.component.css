@@ -1,12 +1,24 @@
-mat-card .btn{
+#orders .btn{
     background: #D9D9D9; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     color: #3B71CA;
 }
 
+#emptyOrders .btn{
+    background: #3013E0; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
 .fa-chevron-circle-down{
     margin-left: .5rem
+}
+
+#emptyOrders .material-symbols-outlined{
+    color: #3013E0;
+    font-size: 96px;
 }
 
 mat-card mat-card-header{
@@ -35,4 +47,17 @@ mat-card mat-card-actions{
 
 #itemLink:hover {
     color: blue;
+}
+
+#emptyOrders {
+    border-radius: 10px;
+    background: #D9D9D9;
+}
+
+#emptyOrders mat-card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
 }
