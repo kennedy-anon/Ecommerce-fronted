@@ -7,12 +7,26 @@
             <a [routerLink]="['/products']"><strong style="color:aliceblue;" id="shopName">equickShop</strong></a>
 
             <div class="input-group" *ngIf="displaySearch">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="search" placeholder="Search Products" class="form-control">
                 </div>
                 <button type="button" class="btn btn-secondary">
                     <i class="fas fa-search"></i>
-                </button>
+                </button> -->
+                <ais-instantsearch [config]="config">
+                    <ais-search-box></ais-search-box>
+
+                    <ais-hits>
+                      <ng-template let-hits="hits">
+                        <ol class="ais-Hits-list">
+                          <li *ngFor="let hit of hits" class="ais-Hits-item">
+                           {{hit.title}}
+                          </li>
+                        </ol>
+                      </ng-template>
+                    </ais-hits>
+
+                </ais-instantsearch>                  
             </div>
         </div>
 

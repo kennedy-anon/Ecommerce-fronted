@@ -4,6 +4,12 @@ import {BreakpointObserver} from '@angular/cdk/layout';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
+import algoliasearch from 'algoliasearch/lite';
+
+const searchClient = algoliasearch(
+  '6VNEBR8EWO',
+  '41bc192cf4916ff03771d0c34e0dbffb'
+);
 
 @Component({
   selector: 'app-header',
@@ -11,6 +17,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  config = {
+    indexName: 'dev_equickShop',
+    searchClient
+  }; // for algoliasearch
+
   destroyed = new Subject<void>();
   displaySearch : boolean = false;
 
