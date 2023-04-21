@@ -16,11 +16,11 @@
                 <ais-instantsearch [config]="config">
                     <ais-search-box class="search-box" [placeholder]="'Search products...'" #searchBox></ais-search-box>
                     <ng-container *ngIf="searchBox.state.query">
-                        <ais-hits>
+                        <ais-hits class="searchResults">
                             <ng-template let-hits="hits">
                               <ol class="ais-Hits-list">
                                 <li *ngFor="let hit of hits.slice(0, 10)" class="ais-Hits-item">
-                                 {{hit.title}}
+                                    <a routerLink="/products/{{ hit.title }}">{{ hit.title }}</a>
                                 </li>
                               </ol>
                             </ng-template>
