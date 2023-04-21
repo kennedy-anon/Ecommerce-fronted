@@ -6,7 +6,7 @@
             </i>
             <a [routerLink]="['/products']"><strong style="color:aliceblue;" id="shopName">equickShop</strong></a>
 
-            <div class="input-group" *ngIf="displaySearch">
+            <div class="searchContainer" *ngIf="displaySearch">
                 <!-- <div class="form-group">
                     <input type="search" placeholder="Search Products" class="form-control">
                 </div>
@@ -14,16 +14,18 @@
                     <i class="fas fa-search"></i>
                 </button> -->
                 <ais-instantsearch [config]="config">
-                    <ais-search-box></ais-search-box>
-                    <ais-hits>
-                        <ng-template let-hits="hits">
-                          <ol class="ais-Hits-list">
-                            <li *ngFor="let hit of hits" class="ais-Hits-item">
-                             {{hit.title}}
-                            </li>
-                          </ol>
-                        </ng-template>
-                    </ais-hits>
+                    <ais-search-box class="search-box" [placeholder]="'Search products...'" #searchBox></ais-search-box>
+                    <ng-container *ngIf="searchBox.state.query">
+                        <ais-hits>
+                            <ng-template let-hits="hits">
+                              <ol class="ais-Hits-list">
+                                <li *ngFor="let hit of hits.slice(0, 10)" class="ais-Hits-item">
+                                 {{hit.title}}
+                                </li>
+                              </ol>
+                            </ng-template>
+                        </ais-hits>
+                    </ng-container>
 
                 </ais-instantsearch>                  
             </div>

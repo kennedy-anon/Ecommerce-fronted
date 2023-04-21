@@ -1,7 +1,12 @@
-.form-control{
-    border-radius: 3px;
+.searchContainer{
     margin-left: 20px;
 }
+
+.search-box {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}  
 
 #truck{
     margin-left: 50px;
@@ -20,8 +25,9 @@ a:hover {
 }
 
 @media screen and (min-width: 1370px){
-    .form-control{
-        width: 500px;
+    .searchContainer{
+        margin-left: 40px;
+        width: 630px;
     }
 
     #shopName{
@@ -29,7 +35,7 @@ a:hover {
     }
 
     #accounts{
-        margin-left: 300px;
+        margin-left: 200px;
     }
 }
 

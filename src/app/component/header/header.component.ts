@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import { Subject, takeUntil } from 'rxjs';
