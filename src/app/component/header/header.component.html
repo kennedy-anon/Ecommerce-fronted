@@ -15,15 +15,14 @@
                 </button> -->
                 <ais-instantsearch [config]="config">
                     <ais-search-box></ais-search-box>
-
                     <ais-hits>
-                      <ng-template let-hits="hits">
-                        <ol class="ais-Hits-list">
-                          <li *ngFor="let hit of hits" class="ais-Hits-item">
-                           {{hit.title}}
-                          </li>
-                        </ol>
-                      </ng-template>
+                        <ng-template let-hits="hits">
+                          <ol class="ais-Hits-list">
+                            <li *ngFor="let hit of hits" class="ais-Hits-item">
+                             {{hit.title}}
+                            </li>
+                          </ol>
+                        </ng-template>
                     </ais-hits>
 
                 </ais-instantsearch>                  
