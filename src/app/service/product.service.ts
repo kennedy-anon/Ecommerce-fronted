@@ -6,6 +6,7 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  apiUrl: string = 'http://localhost:5000/'
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +28,7 @@ export class ProductService {
           }
         })
 
-      return this.http.post('http://localhost:5000/api/products', formData, {headers: headers, observe: 'response'})
+      return this.http.post(`${this.apiUrl}api/products`, formData, {headers: headers, observe: 'response'})
       .pipe(map(res => res));
     }
 
@@ -40,7 +41,7 @@ export class ProductService {
       }else{
         querySent = "";
       }
-      return this.http.get<any>("http://localhost:5000/api/products"+querySent)
+      return this.http.get<any>(`${this.apiUrl}api/products`+querySent)
       .pipe(map((res:any)=>{
         return res;
       }))
@@ -48,7 +49,7 @@ export class ProductService {
 
     //get product by title
     getProductByTitle(title: string){
-      return this.http.get<any>("http://localhost:5000/api/products/findByTitle/"+title)
+      return this.http.get<any>(`${this.apiUrl}api/products/findByTitle/`+title)
       .pipe(map((res:any)=>{
         return res;
       }))

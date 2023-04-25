@@ -6,6 +6,7 @@ import { BehaviorSubject, map } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
+  apiUrl: string = 'http://localhost:5000/'
 
   orderDetails = new BehaviorSubject<any>({});
 
@@ -42,7 +43,7 @@ export class OrderService {
       address: address
     }
 
-    return this.http.post('http://localhost:5000/api/orders', order, {headers: headers, observe: 'response'})
+    return this.http.post(`${this.apiUrl}api/orders`, order, {headers: headers, observe: 'response'})
       .pipe(map(res =>{ 
         this.orderDetails.next(res);
         }));
@@ -72,7 +73,7 @@ export class OrderService {
     const id = localStorage.getItem('user_id');
     var headers = this.setRequestHeaders();
 
-    return this.http.get<any>("http://localhost:5000/api/orders/find/"+id, {headers: headers})
+    return this.http.get<any>(`${this.apiUrl}api/orders/find/`+id, {headers: headers})
       .pipe(map((res:any)=>{
         return this.getItemCount(res);
       }))
@@ -83,7 +84,7 @@ export class OrderService {
     const id = localStorage.getItem('user_id');
     var headers = this.setRequestHeaders();
 
-    return this.http.get<any>("http://localhost:5000/api/orders/productList/"+id+"?orderId="+orderId, {headers: headers})
+    return this.http.get<any>(`${this.apiUrl}api/orders/productList/`+id+"?orderId="+orderId, {headers: headers})
     .pipe(map(res => res));
   }
 }

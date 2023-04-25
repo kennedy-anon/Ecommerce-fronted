@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+  apiUrl: string = 'http://localhost:5000/'
 
   public cartItemList: any =[]
   public productList = new BehaviorSubject<any>([]);

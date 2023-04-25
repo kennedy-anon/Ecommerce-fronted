@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
+  apiUrl: string = 'http://localhost:5000/'
 
   constructor(private http: HttpClient, private jwtHelper :JwtHelperService) {}
 
@@ -46,7 +47,7 @@ export class AuthService {
   registerAccount(newAccount: any){
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:5000/api/auth/register', newAccount, {headers: headers, observe: 'response'})
+    return this.http.post(`${this.apiUrl}api/auth/register`, newAccount, {headers: headers, observe: 'response'})
     .pipe(map(res => res));
   }
 
@@ -54,7 +55,7 @@ export class AuthService {
   loginAccount(credentials: any){
     var headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:5000/api/auth/login', credentials, {headers: headers, observe: 'response'})
+    return this.http.post(`${this.apiUrl}api/auth/login`, credentials, {headers: headers, observe: 'response'})
     .pipe(map(res => res));
   }
   
