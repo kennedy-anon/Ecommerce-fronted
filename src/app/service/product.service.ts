@@ -6,7 +6,8 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  apiUrl: string = 'http://localhost:5000/'
+  //apiUrl: string = 'http://localhost:5000/'
+  apiUrl: string = 'https://ecommerce-rest-api.cyclic.app/'
 
   constructor(private http: HttpClient) { }
 

@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  apiUrl: string = 'http://localhost:5000/'
+  //apiUrl: string = 'http://localhost:5000/'
+  apiUrl: string = 'https://ecommerce-rest-api.cyclic.app/'
 
   public cartItemList: any =[]
   public productList = new BehaviorSubject<any>([]);

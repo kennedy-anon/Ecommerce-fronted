@@ -6,7 +6,8 @@ import { BehaviorSubject, map } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-  apiUrl: string = 'http://localhost:5000/'
+  //apiUrl: string = 'http://localhost:5000/'
+  apiUrl: string = 'https://ecommerce-rest-api.cyclic.app/'
 
   orderDetails = new BehaviorSubject<any>({});
 
