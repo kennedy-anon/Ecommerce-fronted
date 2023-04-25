@@ -18,6 +18,7 @@ export class OrderHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getUserOrders().subscribe(res=>{
       this.orderHistory = res;
+      this.orderHistory = this.orderHistory.reverse();
       this.fetchingOrders = false;  // stop loading spinner
     })
   }
